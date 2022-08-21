@@ -1,4 +1,6 @@
+<% country = ISO3166::Country.new(post.user.country) %>
 <p><%= post.address %></p>
 <p><%= post.highlight %></p>
 <p><%= post.travel_tips %></p>
 <p><%= post.user.first_name %> <%= post.user.last_name %></p>
+<p><%= country %>
