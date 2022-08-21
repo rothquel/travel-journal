@@ -21,8 +21,12 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.save
-    redirect_to post_path(@post)
+    @post.user = current_user
+    if @post.save
+      redirect_to post_path(@post)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
@@ -45,6 +49,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:date, :entry, :location, :highlight, :travel_tips)
+    params.require(:post).permit(:date, :entry, :address, :highlight, :travel_tips, photos: [])
   end
 end
