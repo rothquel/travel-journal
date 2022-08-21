@@ -1,0 +1,8 @@
+<div class="container py-5">
+  <% @post.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+  <p><%= @post.date %></p>
+  <p><%= @post.address %></p>
+  <p><%= @post.entry %></p>
+</div>
