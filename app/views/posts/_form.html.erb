@@ -1,5 +1,5 @@
 <%= simple_form_for(post) do |f| %>
-  <%= f.association :trip %>
+  <%= f.association :trip, :collection => current_user.trips %>
   <%= f.input :date %>
   <%= f.input :address,
   input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
