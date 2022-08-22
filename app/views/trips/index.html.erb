@@ -1,0 +1,5 @@
+<h1>Your trips</h1>
+<% @trips.each do |trip| %>
+  <%= cl_image_tag trip.photo.key, height: 300, width: 400, crop: :fill %>
+  <h1><%= trip.name %></h1>
+<% end %>
