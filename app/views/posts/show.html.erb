@@ -5,6 +5,7 @@
   <p><%= @post.date %></p>
   <p><%= @post.address %></p>
   <p><%= @post.entry %></p>
+  <%= cl_image_tag @post.cover_photo.key, height: 300, width: 400, crop: :fill %>
 
   <p><%= link_to "Edit this post", edit_post_path, class: "btn btn-outline text-center" %></p>
   <p><%= link_to "Delete this post",  @post, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-outline text-center" %></p>
