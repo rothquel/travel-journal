@@ -17,6 +17,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @trip = Trip.new
   end
 
   def create
@@ -24,6 +25,13 @@ class PostsController < ApplicationController
     @post.user = current_user
     if @post.save
       redirect_to post_path(@post)
+    else
+      render :new, status: :unprocessable_entity
+    end
+    @trip = Trip.new(trip_params)
+    @trip.user = current_user
+    if @trip.save
+      redirect_to new_post_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -50,5 +58,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:date, :trip_id, :entry, :address, :highlight, :travel_tips, :cover_photo, photos: [])
+  end
+
+  def trip_params
+    params.require(:trip).permit(:name, :photo)
   end
 end

@@ -1,4 +1,9 @@
 <div class="container py-5">
   <h1 class="text-center">Create a post:</h1>
-  <%= render "form", post: @post %>
+  <% if current_user.trips.present? %>
+    <%= render "form", post: @post %>
+  <% else %>
+    <h2>Before you write your first post, let's create a trip</h2>
+    <%= render "trip_form", trip: @trip %>
+  <% end %>
 </div>
