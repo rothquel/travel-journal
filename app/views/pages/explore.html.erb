@@ -1,21 +1,35 @@
-<div class="row">
-  <div class="col-6 container">
-    <% @posts.each do | post | %>
-      <div>
-      <% country = ISO3166::Country.new(post.user.country) %>
-      <%= cl_image_tag post.cover_photo.key, height: 300, width: 400, crop: :fill %>
-      <p><%= post.address %></p>
-      <p><%= post.highlight %></p>
-      <p><%= post.travel_tips %></p>
-      <p><%= post.user.first_name %> <%= post.user.last_name %></p>
-      <p><%= country %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <div class="container">
+        <div class="row">
+          <% @posts.each do | post | %>
+            <% country = ISO3166::Country.new(post.user.country) %>
+              <div class="col-12 col-lg-6 g-3">
+                <div class="card round-body">
+                  <%= cl_image_tag post.cover_photo.key, class:"card-img-top round-top" %>
+                  <div class="card-body">
+                    <h5 class="card-title fw-bold py-2"><%= post.address %></h5>
+                    <h6 class="small fw-bold">Highlight:</h6>
+                    <p class="card-text"><%= post.highlight %></p>
+                    <h6 class="small fw-bold">Travel tips:</h6>
+                    <p class="card-text"><%= post.travel_tips %></p>
+                    <p class="small">Logged by <%= post.user.first_name %> <%= post.user.last_name.chr %> on <%= post.date.strftime("%B") %></p>
+                    <p><%= country %></p>
+                  </div>
+                </div>
+
+              </div>
+          <% end %>
+        </div>
       </div>
-    <% end %>
-  </div>
-  <div class="col-6">
-    <div style="width: 100%; height: 600px;"
-      data-controller="map"
-      data-map-markers-value="<%= @markers.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+    </div>
+    <div class="col-12 col-lg-6 p-0">
+      <div style="width: 100%; height: 100vh;"
+        class="sticky-top"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+    </div>
   </div>
 </div>
