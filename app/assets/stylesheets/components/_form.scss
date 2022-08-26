@@ -52,3 +52,11 @@
   padding: 20px;
   margin-top: 10px;
 }
+
+.trix-content {
+  min-height: 20em !important;
+}
+
+.trix-button-group.trix-button-group--file-tools {
+  display:none !important;
+}
