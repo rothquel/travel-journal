@@ -28,13 +28,6 @@ class PostsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-    @trip = Trip.new(trip_params)
-    @trip.user = current_user
-    if @trip.save
-      redirect_to new_post_path
-    else
-      render :new, status: :unprocessable_entity
-    end
   end
 
   def edit

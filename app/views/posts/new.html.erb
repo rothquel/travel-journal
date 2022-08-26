@@ -3,7 +3,6 @@
   <% if current_user.trips.present? %>
     <%= render "form", post: @post %>
   <% else %>
-    <h2>Before you write your first post, let's create a trip</h2>
-    <%= render "trip_form", trip: @trip %>
+    <h2><%= link_to "Before you write your first post, let's create a trip", new_trip_path %></h2>
   <% end %>
 </div>
