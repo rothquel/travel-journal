@@ -1,0 +1,18 @@
+.gradient-bg {
+  background: {
+    image:
+      radial-gradient(rgba(red, 0.3), rgba(red, 0) 40vw),
+      radial-gradient(rgba(green, 0.3), rgba(green, 0) 40vw),
+      radial-gradient(rgba(blue, 0.3), rgba(blue, 0) 40vw),
+      radial-gradient(rgba(yellow, 0.3), rgba(yellow, 0) 40vw),
+      radial-gradient(rgba(red, 0.3), rgba(red, 0) 40vw);
+    position:
+      -40vw 14rem,
+      50% 10rem,
+      60vw 14rem,
+      -10vw calc(14rem + 20vw),
+      30vw calc(14rem + 20vw);
+    size: 80vw 80vw;
+    repeat: no-repeat;
+  }
+}
