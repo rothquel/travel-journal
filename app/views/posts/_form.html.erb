@@ -22,7 +22,8 @@
   %>
   </div>
   <div class="py-3">
-    <%= f.input :entry, label: '📝 Journal entry:', input_html: { class: 'form-style' } %>
+  <p class="fw-bold">📝 Journal entry:</p>
+    <%= f.rich_text_area :entry, label: '📝 Journal entry:', input_html: { class: 'form-style' } %>
   </div>
   <div class="py-3 fw-bold">
     <%= f.input :photos, as: :file, label: '📷 Photos (up to 10):', input_html: { multiple: true },
