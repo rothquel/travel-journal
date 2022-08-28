@@ -1,0 +1,22 @@
+footer {
+  background: #212529;
+
+  .text-small {
+    font-size: 0.9rem;
+  }
+
+  a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  a:hover, a:focus {
+    text-decoration: none;
+  }
+
+  .fa-heart {
+    color: #D23333;
+  }
+
+}
