@@ -2,7 +2,6 @@
   justify-content: space-between;
   background: white;
   font-family: 'DM sans';
-  font-weight: 700;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -12,3 +11,24 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.nav-link {
+  font-weight: 700;
+  color: #000000;
+  font-family: 'DM sans';
+}
+
+.nav-link:hover {
+  color: #7E73FF;
+}
+
+.nav-btn {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+// .nav-btn:hover {
+//   background-color: #ffe000;
+//   border: 1px solid #ffe000;
+//   color: #ffffff;
+// }

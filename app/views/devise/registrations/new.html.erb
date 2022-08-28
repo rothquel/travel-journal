@@ -1,44 +1,53 @@
-<div class="container py-5">
-  <h2>Sign up</h2>
+<div class="register-page">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-4">
+        <div class="form-login">
+          <h2>Create account:</h2>
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
+            <%= f.error_notification %>
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
-    <%= f.error_notification %>
+            <div class="form-inputs">
+              <%= f.input :first_name,
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "first-name" },
+                          label: "Your first name:"%>
+              <%= f.input :last_name,
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "last-name" },
+                          label: "Your last name:"%>
+              <%= f.input :email,
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "email" }%>
+              <%= f.input :password,
+                          required: true,
+                          hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                          input_html: { autocomplete: "new-password" } %>
+              <%= f.input :password_confirmation,
+                          required: true,
+                          input_html: { autocomplete: "new-password" } %>
+              <%= f.input :country,
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "country" },
+                          label: "The country you consider home:"%>
+              <%= f.input :photo, as: :file,
+                          required: true,
+                          label: "A super cute profile pic:" %>
+            </div>
 
-    <div class="form-inputs">
-      <%= f.input :first_name,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "first-name" }%>
-      <%= f.input :last_name,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "last-name" }%>
-      <%= f.country_select :country,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "country" }%>
-      <%= f.input :email,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" }%>
-      <%= f.input :password,
-                  required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                  required: true,
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :photo, as: :file,
-                  required: true %>
+            <div class="form-actions">
+              <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+          <%# <div class="text-center"> %>
+            <%# <%= render "devise/shared/links" %>
+          <%# </div> %>
+        </div>
+      </div>
     </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Sign up" %>
-    </div>
-  <% end %>
-
-  <%= render "devise/shared/links" %>
-
-
-
+  </div>
 </div>
