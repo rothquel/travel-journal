@@ -60,6 +60,8 @@ gem 'country_select'
 # gemoji
 gem 'gemoji'
 
+gem 'emoji'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
 

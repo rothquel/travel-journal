@@ -1,13 +1,36 @@
-<div class="container py-5">
-  <% @post.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-  <p><%= @post.date %></p>
-  <p><%= @post.address %></p>
-  <p><%= @post.entry %></p>
-  <%= cl_image_tag @post.cover_photo.key, height: 300, width: 400, crop: :fill %>
-
-  <p><%= link_to "Edit this post", edit_post_path, class: "btn btn-outline text-center" %></p>
-  <p><%= link_to "Delete this post",  @post, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-outline text-center" %></p>
-  <p><%= link_to "Back to all posts", posts_path, class: "btn btn-outline text-center" %></p>
-</div>
+<% if @post.user == current_user %>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-6">
+        <div class="container py-5">
+          <p class="fst-italic text-center small">Posted on <%= @post.date.strftime("%b %d %Y") %></p>
+          <h2 class="fw-bold text-center"><%= @post.address %></h2>
+          <%= cl_image_tag @post.cover_photo.key, class: "img-fluid py-3" %>
+          <p class="text-center pb-3"><%= @post.entry %></p>
+          <div class="text-center">
+            <%= link_to edit_post_path do %>
+              <i class="fa-solid fa-pen-to-square"></i>
+            <% end %>
+            <%= link_to @post, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+              <i class="fa-solid fa-trash-can"></i>
+            <% end %>
+            <p><%= link_to "<< Back to all posts", posts_path, class: "btn btn-outline text-center" %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="show-page">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-6">
+          <div class="show-secret">
+            <h2 class="text-center">Other traveller's posts are private 🤫</h2>
+            <p><%= link_to "Browse your own", posts_path %> or <%= link_to "create a new one", new_post_path %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

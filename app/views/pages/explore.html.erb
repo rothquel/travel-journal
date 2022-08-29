@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12 col-lg-6 gradient-bg">
-      <div class="container">
+      <div class="container pb-3">
         <div class="row">
           <% @posts.each do | post | %>
             <% country = ISO3166::Country.new(post.user.country) %>
@@ -14,8 +14,7 @@
                     <p class="card-text"><%= post.highlight %></p>
                     <h6 class="small fw-bold">Travel tips:</h6>
                     <p class="card-text"><%= post.travel_tips %></p>
-                    <p class="small">Logged by <%= post.user.first_name %> <%= post.user.last_name.chr %> on <%= post.date.strftime("%B") %></p>
-                    <p><%= country %></p>
+                    <p class="small">Logged by <strong><%= post.user.first_name %> <%= post.user.last_name.chr %></strong> (<%= country.emoji_flag %>) in <%= post.date.strftime("%B %Y") %></p>
                   </div>
                 </div>
 
