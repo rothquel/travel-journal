@@ -2,9 +2,11 @@
   <div class="container px-4">
     <div class="row">
       <div class="col text-center">
-        <h5 class="h1 text-white">FB.</h5>
+        <%= link_to root_path do %>
+          <%= image_tag "navigation.png", class: "footer-logo" %>
+        <% end %>
         <p class="small text-muted">A beautiful online travel journal that ensures you never lose a travel memory again.</p>
-        <p class="small text-muted"><a href="#">Home</a> <a href="#">About</a> <a href="#">Get started</a> <a href="#">FAQ</a></p>
+        <p class="small text-muted"><a href="#">Home</a> · <a href="#">About</a> · <a href="#">Get started</a> · <a href="#">FAQ</a></p>
         <p class="small text-muted">
           Made with <i class="fas fa-heart"></i> in Honolulu, Hawaii
         </p>
