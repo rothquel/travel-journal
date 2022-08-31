@@ -1,5 +1,17 @@
-<h1>Your trips</h1>
-<% @trips.each do |trip| %>
-  <%= cl_image_tag trip.photo.key, height: 300, width: 400, crop: :fill %>
-  <h1><%= trip.name %></h1>
-<% end %>
+<div class="container py-5 pb-3">
+  <h2 class="text-center fw-bold">Your trips</h2>
+    <div class="row">
+      <% @trips.each do |trip| %>
+        <%= link_to trip_path(trip), class: "card-cat-link" do %>
+          <div class="col py-3">
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= trip.photo.url %>)">
+              <%= trip.name %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="text-end my-3">
+      <%= link_to "Create a new trip", new_trip_path, class: "btn btn-primary home-btn" %>
+    </div>
+</div>

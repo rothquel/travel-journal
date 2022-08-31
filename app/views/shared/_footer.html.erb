@@ -5,8 +5,36 @@
         <%= link_to root_path do %>
           <%= image_tag "navigation.png", class: "footer-logo" %>
         <% end %>
-        <p class="small text-muted">A beautiful online travel journal that ensures you never lose a travel memory again.</p>
-        <p class="small text-muted"><a href="#">Home</a> · <a href="#">About</a> · <a href="#">Get started</a> · <a href="#">FAQ</a></p>
+        <p class="text-white fw-bold pb-3"><span class="highlight">Never lose a travel memory again.</span></p>
+        <div class="row justify-content-center pb-3">
+          <div class="col-4">
+            <div class="row justify-content-between">
+              <div class="col">
+                <%= link_to "Home", root_path %>
+              </div>
+              <div class="col">
+                <%= link_to "Explore", explore_path %>
+              </div>
+              <div class="col">
+                <% if user_signed_in? %>
+                  <%= link_to "My posts", posts_path %>
+                <% else %>
+                  <%= link_to "Get started", new_user_registration_path %>
+                <% end %>
+
+              </div>
+              <div class="col">
+                <% if user_signed_in? %>
+                  <%= link_to "Create post", new_post_path %>
+                <% else %>
+                  <%= link_to "Login", explore_path %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <%# <p class="small text-muted"><a href="#">Home</a> · <a href="#">About</a> · <a href="#">Get started</a> · <a href="#">FAQ</a></p> %>
         <p class="small text-muted">
           Made with <i class="fas fa-heart"></i> in Honolulu, Hawaii
         </p>

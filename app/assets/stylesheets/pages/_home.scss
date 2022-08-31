@@ -1,1 +1,22 @@
 // Specific CSS for your home-page
+.home-header {
+  background-image: url("beach.jpg");
+  background-size: cover;
+  height: 85vh;
+  background-position: center;
+}
+
+.home-btn {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.home-btn:hover {
+  color: #ffffff;
+}
+
+.home-highlight {
+  background-color: #ffe000;
+  padding-left: 3px;
+  padding-right: 3px;
+}

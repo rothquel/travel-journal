@@ -1,2 +1,29 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="home-header">
+  <div class="container col-xxl-10 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-1 py-5">
+      <div class="col-10 col-sm-8 col-lg-5">
+        <%# <img src="bootstrap-themes.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy"> %>
+      </div>
+      <div class="col-lg-7 pt-3">
+        <h1 class="display-3 fw-bold lh-sm mb-3 text-white">A beautiful online travel journal for every traveller.</h1>
+        <h5 class="lead pb-3 fw-bold text-dark"><span class="home-highlight">Never lose a travel memory again</span></h5>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-3">
+          <% if user_signed_in? %>
+            <%= link_to "Create post", new_post_path, class: "btn btn-primary px-4 btn-lg me-md-2 home-btn" %>
+            <%= link_to "My posts", posts_path, class: "btn btn-outline-light btn-lg px-4 fw-bold" %>
+          <% else %>
+            <%= link_to "Create account", new_user_registration_path, class: "btn btn-primary px-4 btn-lg me-md-2 home-btn" %>
+            <%= link_to "Explore", explore_path, class: "btn btn-outline-light btn-lg px-4 fw-bold" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container py-5">
+  <div class="row py-5 justify-content-center">
+    <div class="col-6">
+      <h3 class="text-center fw-bold">Take your travel experiences with you everywhere ✈️</h3>
+    </div>
+  </div>
+</div>

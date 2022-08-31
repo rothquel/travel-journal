@@ -1,8 +1,23 @@
-<h1><%= @trip.name %></h1>
-<% @trip.posts.each do |post| %>
-  <%= post.entry %>
-<% end %>
+<% if @trip.user == current_user %>
+  <h1><%= @trip.name %></h1>
+  <% @trip.posts.each do |post| %>
+    <%= post.entry %>
+  <% end %>
 
-  <p><%= link_to "Edit this trip", edit_trip_path, class: "btn btn-outline text-center" %></p>
-  <p><%= link_to "Delete this trip",  @trip, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-outline text-center" %></p>
-  <p><%= link_to "Back to all trips", trips_path, class: "btn btn-outline text-center" %></p>
+    <p><%= link_to "Edit this trip", edit_trip_path, class: "btn btn-outline text-center" %></p>
+    <p><%= link_to "Delete this trip",  @trip, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-outline text-center" %></p>
+    <p><%= link_to "Back to all trips", trips_path, class: "btn btn-outline text-center" %></p>
+<% else %>
+  <div class="explore-page">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-6">
+          <div class="show-secret">
+            <h2 class="text-center">Other traveller's trips are private 🤫</h2>
+            <p><%= link_to "Browse your own", trips_path %> or <%= link_to "create a new one", new_trip_path %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

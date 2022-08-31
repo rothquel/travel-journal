@@ -1,5 +1,5 @@
 <%= simple_form_for(trip) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit %>
+  <%= f.input :name, label: "Give your trip a name:", placeholder: "Europe Trip 2022, Korea Trip 2021 etc" %>
+  <%= f.input :photo, as: :file, label: "Choose a cover photo for your trip ✈️:" %>
+  <%= f.submit "create", class: "btn btn-primary home-btn" %>
 <% end %>

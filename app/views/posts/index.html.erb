@@ -1,16 +1,16 @@
 <% if current_user.posts.present? %>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-12 col-lg-6">
+      <div class="col-12 col-lg-6 index-page">
         <div class="container">
           <div class="row">
             <% @posts.each do | post | %>
                 <div class="col-12 col-lg-6 g-3">
-                  <div class="card mb-3">
+                  <div class="card mb-3 border-0">
                     <%= cl_image_tag post.cover_photo.key, class:"card-img-top" %>
                     <div class="card-body">
                       <p class="card-text"><%= post.date.strftime("%b %d %Y") %></p>
-                      <h5 class="card-title pb-1"><%= post.address %></h5>
+                      <h5 class="card-title pb-1"><%= post.address.chomp[/^([^,])+/] %></h5>
                       <a href="<%= post_path(post) %>">View post</a>
                     </div>
                   </div>
@@ -20,8 +20,7 @@
         </div>
       </div>
       <div class="col-12 col-lg-6 p-0">
-        <div style="width: 100%; height: 100%"
-          class="sticky-top"
+        <div class="maps"
           data-controller="map"
           data-map-markers-value="<%= @markers.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
@@ -29,5 +28,7 @@
     </div>
   </div>
 <% else %>
-  <%= link_to "Go ahead, write your first post", new_post_path %>
+<div class="container py-5 my-3">
+  <h2 class="text-center fw-bold py-5"><%= link_to "Go ahead, write your first post 💪", new_post_path, class: "text-decoration-none" %></h2>
+</div>
 <% end %>

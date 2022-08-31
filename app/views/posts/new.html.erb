@@ -1,8 +1,8 @@
 <div class="container py-5">
-  <h1 class="text-center">Create a post:</h1>
+  <h1 class="text-center fw-bold">Create a post:</h1>
   <% if current_user.trips.present? %>
     <%= render "form", post: @post %>
   <% else %>
-    <h2><%= link_to "Before you write your first post, let's create a trip", new_trip_path %></h2>
+    <h4 class="text-center fw-bold py-5"><%= link_to "Before you write your first post, let's create a trip", new_trip_path %></h4>
   <% end %>
 </div>
