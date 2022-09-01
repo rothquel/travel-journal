@@ -27,7 +27,7 @@
                 <% if user_signed_in? %>
                   <%= link_to "Create post", new_post_path %>
                 <% else %>
-                  <%= link_to "Login", explore_path %>
+                  <%= link_to "Login", new_user_session_path %>
                 <% end %>
               </div>
             </div>
