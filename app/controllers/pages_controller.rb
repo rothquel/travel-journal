@@ -5,7 +5,11 @@ class PagesController < ApplicationController
   end
 
   def explore
-    @posts = Post.all
+    if params[:query].present?
+      @posts = Post.where("address ILIKE ?", "%#{params[:query]}%")
+    else
+      @posts = Post.all
+    end
     @markers = @posts.geocoded.map do |post|
       {
         lat: post.latitude,

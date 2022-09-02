@@ -3,17 +3,26 @@
     <div class="row">
       <div class="col-12 col-lg-6 index-page">
         <div class="container">
+          <%= form_with url: posts_path, method: :get, class: "search-box" do %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "search-input",
+              placeholder: "Search your posts"
+            %>
+            <%= submit_tag "🔍", class: "search-button" %>
+          <% end %>
           <div class="row">
-            <% @posts.each do | post | %>
+            <% @posts.sort_by(&:date).reverse.each do | post | %>
                 <div class="col-12 col-lg-6 g-3">
-                  <div class="card mb-3 border-0">
-                    <%= cl_image_tag post.cover_photo.key, class:"card-img-top" %>
-                    <div class="card-body">
-                      <p class="card-text"><%= post.date.strftime("%b %d %Y") %></p>
-                      <h5 class="card-title pb-1"><%= post.address.chomp[/^([^,])+/] %></h5>
-                      <a href="<%= post_path(post) %>">View post</a>
+                  <%= link_to post_path(post), class: "card-cat-link" do %>
+                  <div class="card mb-3 border-0 round-body ">
+                    <%= cl_image_tag post.cover_photo.key, class:"card-img-top round-top" %>
+                    <div class="card-body text-center">
+                      <p class="card-text small fw-bold text-black"><%= post.date.strftime("%e %b %Y") %></p>
+                      <h3 class="card-title pb-1 fw-bold text-black"><span class="highlight"><%= post.address.chomp[/^([^,])+/] %></span></h3>
                     </div>
                   </div>
+                  <% end %>
                 </div>
             <% end %>
           </div>
