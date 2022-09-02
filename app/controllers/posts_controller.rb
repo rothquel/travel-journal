@@ -2,7 +2,12 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.where(user_id: current_user.id)
+    if params[:query].present?
+      my_posts = Post.where(user_id: current_user.id)
+      @posts = my_posts.where("address ILIKE ?", "%#{params[:query]}%")
+    else
+      @posts = Post.all.where(user_id: current_user.id)
+    end
     @markers = @posts.geocoded.map do |post|
       {
         lat: post.latitude,

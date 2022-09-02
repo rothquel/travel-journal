@@ -1,5 +1,5 @@
 <% country = ISO3166::Country.new(post.user.country) %>
-<%= cl_image_tag post.cover_photo.key, height: 300, width: 400, crop: :fill %>
+<%= cl_image_tag post.cover_photo.key, height: 100, width: 200, crop: :fill %>
 <p><%= post.address %></p>
 <p><%= post.highlight %></p>
 <p><%= post.travel_tips %></p>

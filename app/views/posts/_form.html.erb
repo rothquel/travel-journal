@@ -5,39 +5,36 @@
       input_html: { class: "tag-selector" },
       item_wrapper_class: 'tag-item',
       label: '✈️ What trip is this?' %>
+  </div>
+  <div class="row">
+    <div class="py-3 fw-bold col-12 col-sm-6">
+      <%= f.input :date, min: Date.today, html5: true, label: "📅 Date:" %>
     </div>
-  <div class="py-3 fw-bold">
-    <%= f.input :date, min: Date.today, html5: true, label: "📅 Date of post:" %>
+    <div class="py-3 fw-bold col-12 col-sm-6">
+      <%= f.input :address, label: '📍 Location:',
+      input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+      wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
+      placeholder: "You can search by country, city, zipcode or even a specific address"
+      %>
+    </div>
   </div>
   <div class="py-3 fw-bold">
     <%= f.input :cover_photo, as: :file, label: '🌃 Please select a cover photo for this post:',
-    hint: "This photo may be seen by others - you can upload private images below.",
+    hint: "(Keep in mind this photo may be seen by other travellers)",
     input_html: { class: "mb-2" } %>
-  </div>
-  <div class="py-3 fw-bold">
-    <%= f.input :address, label: '📍 Location:',
-    input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
-    wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
-    placeholder: "You can search by country, city, zipcode or even a specific address"
-  %>
   </div>
   <div class="py-3">
   <p class="fw-bold">📝 Journal entry:</p>
     <%= f.rich_text_area :entry, label: '📝 Journal entry:', input_html: { class: 'form-style' } %>
   </div>
-  <div class="py-3 fw-bold">
-    <%= f.input :photos, as: :file, label: '📷 Photos (up to 10):', input_html: { multiple: true },
-    hint: "These ones can only be seen by you!",
-    input_html: { class: "mb-2" } %>
-  </div>
   <div class="last-questions">
-    <p class="fw-bold">These last 2 questions help other travellers find great places to visit</p>
+    <p class="fw-bold">These last 2 questions help other travellers find great places to visit. </p>
     <div class=" fw-bold">
       <%= f.input :highlight, label: '🎉 The highlight of your day:' %>
     </div>
     <div class=" fw-bold">
       <%= f.input :travel_tips, label: '🙌 Tips for future travellers that may explore here:',
-      hint: "Share anything you think could be valuable - a great place to eat, a great time to arrive at a monument etc.",
+      hint: "Share anything you think could be valuable - a great place to eat, the best ways to get into busy museums etc.",
       input_html: { class: "mb-2" } %>
     </div>
   </div>

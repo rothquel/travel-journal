@@ -8,19 +8,23 @@
           <h6 class="text-center pt-1">Part of <%= link_to @post.trip.name, trip_path(@post.trip) %></h6>
           <%= cl_image_tag @post.cover_photo.key, class: "img-fluid py-3" %>
           <p><%= @post.entry %></p>
-          <div class="text-center">
-          <div class="row">
-            <div class="col">
-              <%= link_to edit_post_path, class: "text-decoration-none" do %>
-               <i class="fa-solid fa-pen-to-square"></i>
-              <% end %>
-              <%= link_to @post, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-                <i class="fa-solid fa-trash-can"></i>
-              <% end %>
-              <p><%= link_to "<< Back to all posts", posts_path, class: "btn btn-outline text-center" %></p>
+            <div class="d-flex justify-content-between pt-3">
+              <div class="d-inline-block">
+                <p><%= link_to "<< Back to all posts", posts_path, class: "highlight text-decoration-none text-black" %></p>
+              </div>
+              <div class="d-inline-block">
+                <div class="d-inline-block">
+                  <%= link_to edit_post_path, class: "text-decoration-none text-black" do %>
+                    ✏️
+                  <% end %>
+                </div>
+                <div class="d-inline-block">
+                  <%= link_to @post,class: "text-decoration-none text-black", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                    🗑
+                  <% end %>
+                </div>
+              </div>
             </div>
-          </div>
-          </div>
         </div>
       </div>
     </div>
