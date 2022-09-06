@@ -1,0 +1,11 @@
+#places-map {
+  width: 90vw;
+  height: 90vh;
+}
+path {
+  fill: #555;
+  cursor: pointer;
+}
+path:hover {
+  fill: #7E73FF;
+}

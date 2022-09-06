@@ -1,12 +1,29 @@
 <% if @trip.user == current_user %>
-  <h1><%= @trip.name %></h1>
-  <% @trip.posts.each do |post| %>
-    <%= post.entry %>
-  <% end %>
-
-    <p><%= link_to "Edit this trip", edit_trip_path, class: "btn btn-outline text-center" %></p>
-    <p><%= link_to "Delete this trip",  @trip, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-outline text-center" %></p>
-    <p><%= link_to "Back to all trips", trips_path, class: "btn btn-outline text-center" %></p>
+<div class="d-flex justify-content-center align-items-center text-center trip-show-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @trip.photo.key %>')">
+    <h1 class="display-5 fw-bold text-white"><span class="highlight"><%= @trip.name %></span></h1>
+</div>
+<div class="container py-5">
+  <div class="row">
+    <% @trip.posts.sort_by(&:date).reverse.each do |post| %>
+      <div class="col-3">
+        <%= link_to post_path(post), class: "card-cat-link" do %>
+          <div class="card mb-3 border-0 round-body ">
+            <%= cl_image_tag post.cover_photo.key, class:"card-img-top round-top" %>
+            <div class="card-body text-center">
+              <p class="card-text small fw-bold text-black"><%= post.date.strftime("%e %b %Y") %></p>
+              <h3 class="card-title pb-1 fw-bold text-black"><span class="highlight"><%= post.address.chomp[/^([^,])+/] %></span></h3>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="d-flex justify-content-end align-items-center">
+    <p><%= link_to "Edit this trip", edit_trip_path, class: "btn btn-outline-primary text-center me-3" %></p>
+    <p><%= link_to "Delete this trip",  @trip, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-outline-danger text-center me-3" %></p>
+    <p><%= link_to "Back to all trips", trips_path, class: "btn btn-outline-success text-center" %></p>
+  </div>
+</div>
 <% else %>
   <div class="explore-page">
     <div class="container py-5">

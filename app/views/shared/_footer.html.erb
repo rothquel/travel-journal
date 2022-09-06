@@ -7,23 +7,22 @@
         <% end %>
         <p class="text-white fw-bold pb-3"><span class="highlight">Never lose a travel memory again.</span></p>
         <div class="row justify-content-center pb-3">
-          <div class="col-4">
+          <div class="col-sm-8 col-lg-4">
             <div class="row justify-content-between">
-              <div class="col">
+              <div class="col-12 col-md-3">
                 <%= link_to "Home", root_path %>
               </div>
-              <div class="col">
+              <div class="col-12 col-md-3">
                 <%= link_to "Explore", explore_path %>
               </div>
-              <div class="col">
+              <div class="col-12 col-md-3">
                 <% if user_signed_in? %>
                   <%= link_to "My posts", posts_path %>
                 <% else %>
                   <%= link_to "Get started", new_user_registration_path %>
                 <% end %>
-
               </div>
-              <div class="col">
+              <div class="col-12 col-md-3">
                 <% if user_signed_in? %>
                   <%= link_to "Create post", new_post_path %>
                 <% else %>

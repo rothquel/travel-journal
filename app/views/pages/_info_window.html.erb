@@ -1,7 +1,7 @@
 <% country = ISO3166::Country.new(post.user.country) %>
-<%= cl_image_tag post.cover_photo.key, height: 100, width: 200, crop: :fill %>
-<p><%= post.address %></p>
-<p><%= post.highlight %></p>
-<p><%= post.travel_tips %></p>
-<p><%= post.user.first_name %> <%= post.user.last_name %></p>
-<p><%= country %>
+<div class="info-window">
+  <h5 class="card-title py-3"><%= post.address.chomp[/^([^,])+/] %></h5>
+  <p class="card-text"><strong>Highlight:</strong> <%= post.highlight %></p>
+  <p class="card-text"><strong>Travel tips:</strong> <%= post.travel_tips %></p>
+  <p class="small"><span class="highlight">Logged by <strong><%= post.user.first_name %> <%= post.user.last_name.chr %></strong> (<%= country.emoji_flag %>) in <%= post.date.strftime("%B %Y") %></span></p>
+</div>
